@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A responsive analytics dashboard demo for AWS CloudFront caching experiments." />
+  <title>PulseBoard — Analytics</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">P</span><span>pulse<span class="brand-light">board</span></span></a>
+      <div class="workspace"><span class="workspace-icon">✦</span><span><b>Acme Workspace</b><small>Free plan</small></span><span class="chevron">⌄</span></div>
+      <p class="nav-label">WORKSPACE</p>
+      <nav>
+        <a class="nav-item active" href="#"><span>▦</span> Overview</a>
+        <a class="nav-item" href="#"><span>◷</span> Analytics</a>
+        <a class="nav-item" href="#"><span>♧</span> Audience</a>
+        <a class="nav-item" href="#"><span>▤</span> Reports <span class="nav-count">4</span></a>
+      </nav>
+      <p class="nav-label">MANAGE</p>
+      <nav>
+        <a class="nav-item" href="#"><span>⌘</span> Integrations</a>
+        <a class="nav-item" href="#"><span>⚙</span> Settings</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-icon">?</div><b>Need a hand?</b><p>Visit our help center for tips and guides.</p><a href="#">Get support <span>↗</span></a></div>
+        <div class="profile"><div class="avatar">JD</div><span><b>Jordan Davis</b><small>Admin account</small></span><span class="dots">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Toggle menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <b>Overview</b></div>
+        <div class="top-actions"><span class="status"><i></i> All systems operational</span><button class="icon-button" aria-label="Notifications">♧<em></em></button><div class="top-avatar">JD</div></div>
+      </header>
+
+      <section class="page">
+        <div class="page-heading">
+          <div><p class="eyebrow">MONDAY, NOVEMBER 25, 2026</p><h1>Good morning, Jordan <span>✦</span></h1><p class="subheading">Here's what's happening with your workspace today.</p></div>
+          <div class="heading-actions"><button class="button button-light" id="exportButton">↓ Export</button><button class="button button-primary" id="refreshButton">↻ <span>Refresh data</span></button></div>
+        </div>
+
+        <div class="filter-row"><div class="tabs"><button class="tab active" data-period="7">7 days</button><button class="tab" data-period="30">30 days</button><button class="tab" data-period="90">90 days</button></div><button class="date-filter">▦ &nbsp; Nov 19 – Nov 25, 2026 &nbsp;⌄</button></div>
+
+        <div class="metrics-grid">
+          <article class="metric-card"><div class="metric-top"><span>Total visitors</span><span class="metric-icon purple">◉</span></div><div class="metric-value" id="visitors">48,294</div><div class="metric-foot"><span class="positive">↗ 12.8%</span><span>vs. previous period</span></div><div class="sparkline purple-line"><svg viewBox="0 0 140 35" preserveAspectRatio="none"><path d="M0 28 C12 24 14 29 25 20 S42 24 52 16 S70 23 82 12 S101 19 112 8 S130 12 140 2" /></svg></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Page views</span><span class="metric-icon blue">▤</span></div><div class="metric-value" id="pageviews">126,580</div><div class="metric-foot"><span class="positive">↗ 8.4%</span><span>vs. previous period</span></div><div class="sparkline blue-line"><svg viewBox="0 0 140 35" preserveAspectRatio="none"><path d="M0 27 C14 25 16 14 28 20 S43 10 54 16 S70 6 82 15 S96 10 108 8 S126 14 140 2" /></svg></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Bounce rate</span><span class="metric-icon orange">↗</span></div><div class="metric-value" id="bounce">32.6<span class="unit">%</span></div><div class="metric-foot"><span class="positive">↓ 2.1%</span><span>vs. previous period</span></div><div class="sparkline orange-line"><svg viewBox="0 0 140 35" preserveAspectRatio="none"><path d="M0 5 C12 10 18 4 28 14 S45 10 56 18 S73 12 84 23 S102 18 114 25 S130 23 140 32" /></svg></div></article>
+          <article class="metric-card"><div class="metric-top"><span>Avg. session</span><span class="metric-icon green">◷</span></div><div class="metric-value" id="session">3m 42s</div><div class="metric-foot"><span class="positive">↗ 6.2%</span><span>vs. previous period</span></div><div class="sparkline green-line"><svg viewBox="0 0 140 35" preserveAspectRatio="none"><path d="M0 30 C12 26 18 28 28 18 S44 23 55 12 S70 20 82 10 S98 16 110 6 S130 10 140 2" /></svg></div></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel traffic-panel">
+            <div class="panel-heading"><div><h2>Traffic overview</h2><p>Visitor activity over time</p></div><button class="more-button">•••</button></div>
+            <div class="chart-legend"><span><i class="legend-dot violet"></i> Visitors</span><span><i class="legend-dot pale"></i> Page views</span></div>
+            <div class="chart-wrap"><div class="y-labels"><span>20k</span><span>15k</span><span>10k</span><span>5k</span><span>0</span></div><div class="chart-area"><div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div><svg id="trafficChart" viewBox="0 0 700 220" preserveAspectRatio="none" aria-label="Traffic chart"><defs><linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#8067ee" stop-opacity=".22"/><stop offset="100%" stop-color="#8067ee" stop-opacity="0"/></linearGradient></defs><path class="area-path" d="M0 172 C40 160 50 118 100 135 S160 150 200 104 S260 125 300 88 S360 110 400 75 S460 92 500 55 S560 80 600 40 S660 50 700 18 L700 220 L0 220Z"/><path class="line-path" d="M0 172 C40 160 50 118 100 135 S160 150 200 104 S260 125 300 88 S360 110 400 75 S460 92 500 55 S560 80 600 40 S660 50 700 18"/></svg><div class="x-labels"><span>Nov 19</span><span>Nov 20</span><span>Nov 21</span><span>Nov 22</span><span>Nov 23</span><span>Nov 24</span><span>Nov 25</span></div></div></div>
+          </section>
+
+          <section class="panel source-panel">
+            <div class="panel-heading"><div><h2>Traffic sources</h2><p>Where your visitors come from</p></div><button class="more-button">•••</button></div>
+            <div class="donut-area"><div class="donut"><div><b>48.2k</b><small>Visitors</small></div></div></div>
+            <div class="source-list">
+              <div><span><i class="legend-dot violet"></i> Direct</span><b>42.8%</b></div>
+              <div><span><i class="legend-dot blue-dot"></i> Organic search</span><b>28.4%</b></div>
+              <div><span><i class="legend-dot orange-dot"></i> Social media</span><b>18.6%</b></div>
+              <div><span><i class="legend-dot gray-dot"></i> Referral</span><b>10.2%</b></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel pages-panel">
+          <div class="panel-heading"><div><h2>Top pages</h2><p>Your most visited pages this week</p></div><a class="view-all" href="#">View all pages ↗</a></div>
+          <div class="table-wrap"><table><thead><tr><th>PAGE</th><th>PAGE VIEWS</th><th>UNIQUE VISITORS</th><th>BOUNCE RATE</th><th>TREND</th></tr></thead><tbody>
+            <tr><td><span class="page-symbol">⌂</span><b>/home</b></td><td>32,480</td><td>18,294</td><td>24.8%</td><td><span class="positive">↗ 14.2%</span></td></tr>
+            <tr><td><span class="page-symbol blue-symbol">▤</span><b>/products</b></td><td>24,190</td><td>12,840</td><td>31.2%</td><td><span class="positive">↗ 8.6%</span></td></tr>
+            <tr><td><span class="page-symbol orange-symbol">♧</span><b>/about</b></td><td>18,650</td><td>10,420</td><td>28.4%</td><td><span class="negative">↘ 2.4%</span></td></tr>
+            <tr><td><span class="page-symbol green-symbol">✉</span><b>/contact</b></td><td>12,320</td><td>8,740</td><td>19.6%</td><td><span class="positive">↗ 11.8%</span></td></tr>
+          </tbody></table></div>
+        </section>
+        <footer><span>© 2026 PulseBoard. All rights reserved.</span><span>Made for better decisions <b>✦</b></span></footer>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
